@@ -1,0 +1,17 @@
+[build-system]
+requires = ["flit_core >=3.2,<4"]
+build-backend = "flit_core.buildapi"
+
+[project]
+name = "tenderiq"
+authors = [
+    {name = "TenderIQ", email = "hello@tenderiq.app"}
+]
+description = "AI-powered tender management for African procurement markets"
+requires-python = ">=3.10"
+readme = "README.md"
+dynamic = ["version"]
+dependencies = []
+
+[project.urls]
+Homepage = "https://github.com/slyempire/TenderIQ"
