@@ -1,0 +1,108 @@
+{
+ "actions": [],
+ "creation": "2026-01-01 00:00:00",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "tender",
+  "submitted_on",
+  "courier_tracking",
+  "portal_reference",
+  "receipt_confirmation",
+  "outcome",
+  "award_value",
+  "loss_reason",
+  "competitor_winner"
+ ],
+ "fields": [
+  {
+   "fieldname": "tender",
+   "label": "Tender",
+   "fieldtype": "Link",
+   "options": "Tender",
+   "reqd": 1,
+   "unique": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "submitted_on",
+   "label": "Submitted On",
+   "fieldtype": "Datetime",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "courier_tracking",
+   "label": "Courier Tracking #",
+   "fieldtype": "Data"
+  },
+  {
+   "fieldname": "portal_reference",
+   "label": "Portal Reference",
+   "fieldtype": "Data"
+  },
+  {
+   "fieldname": "receipt_confirmation",
+   "label": "Receipt Confirmation",
+   "fieldtype": "Attach"
+  },
+  {
+   "fieldname": "outcome",
+   "label": "Outcome",
+   "fieldtype": "Select",
+   "options": "Pending\nAwarded\nLost\nDisqualified\nCancelled",
+   "default": "Pending",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "award_value",
+   "label": "Award Value",
+   "fieldtype": "Currency"
+  },
+  {
+   "fieldname": "loss_reason",
+   "label": "Loss / Disqualification Reason",
+   "fieldtype": "Small Text"
+  },
+  {
+   "fieldname": "competitor_winner",
+   "label": "Winning Competitor",
+   "fieldtype": "Data"
+  }
+ ],
+ "links": [],
+ "modified": "2026-01-01 00:00:00",
+ "modified_by": "Administrator",
+ "module": "TenderIQ",
+ "name": "Submission Record",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0
+  },
+  {
+   "role": "Tender Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 0
+  },
+  {
+   "role": "Bid Contributor",
+   "read": 1,
+   "write": 1,
+   "create": 0,
+   "delete": 0
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "autoname": "field:tender"
+}

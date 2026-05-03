@@ -1,0 +1,10 @@
+[
+  {
+    "url": "https://github.com/frappe/frappe",
+    "branch": "version-15"
+  },
+  {
+    "url": "https://github.com/slyempire/tenderiq",
+    "branch": "main"
+  }
+]

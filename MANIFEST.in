@@ -1,0 +1,14 @@
+include MANIFEST.in
+include requirements.txt
+include LICENSE
+include README.md
+
+recursive-include tenderiq *.json
+recursive-include tenderiq *.js
+recursive-include tenderiq *.css
+recursive-include tenderiq *.html
+recursive-include tenderiq *.csv
+recursive-include tenderiq *.py
+
+prune tenderiq/public/node_modules
+prune tenderiq/public/.cache

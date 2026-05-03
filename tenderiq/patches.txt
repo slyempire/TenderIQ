@@ -1,0 +1,5 @@
+# TenderIQ patches – executed in order on bench migrate
+# Format: tenderiq.patches.patch_module.execute
+#
+# NOTE: Do not remove entries from this file once deployed.
+# Add new patches at the bottom.

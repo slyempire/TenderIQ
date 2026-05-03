@@ -1,0 +1,95 @@
+{
+ "actions": [],
+ "creation": "2026-01-01 00:00:00",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "anthropic_api_key",
+  "anthropic_model",
+  "africastalking_api_key",
+  "africastalking_username",
+  "enable_whatsapp_alerts",
+  "enable_ppra_scraper",
+  "watch_keywords",
+  "watch_categories"
+ ],
+ "fields": [
+  {
+   "fieldname": "anthropic_api_key",
+   "label": "Anthropic API Key",
+   "fieldtype": "Password"
+  },
+  {
+   "fieldname": "anthropic_model",
+   "label": "Anthropic Model",
+   "fieldtype": "Data",
+   "default": "claude-sonnet-4-5"
+  },
+  {
+   "fieldname": "africastalking_api_key",
+   "label": "Africa's Talking API Key",
+   "fieldtype": "Password"
+  },
+  {
+   "fieldname": "africastalking_username",
+   "label": "Africa's Talking Username",
+   "fieldtype": "Data"
+  },
+  {
+   "fieldname": "enable_whatsapp_alerts",
+   "label": "Enable WhatsApp Alerts",
+   "fieldtype": "Check"
+  },
+  {
+   "fieldname": "enable_ppra_scraper",
+   "label": "Enable PPRA Scraper",
+   "fieldtype": "Check",
+   "default": 1
+  },
+  {
+   "fieldname": "watch_keywords",
+   "label": "Opportunity Keywords (comma-separated)",
+   "fieldtype": "Small Text"
+  },
+  {
+   "fieldname": "watch_categories",
+   "label": "Watch Categories (comma-separated)",
+   "fieldtype": "Small Text"
+  }
+ ],
+ "links": [],
+ "modified": "2026-01-01 00:00:00",
+ "modified_by": "Administrator",
+ "module": "TenderIQ",
+ "name": "TenderIQ Settings",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0
+  },
+  {
+   "role": "Tender Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 0
+  },
+  {
+   "role": "Bid Contributor",
+   "read": 1,
+   "write": 1,
+   "create": 0,
+   "delete": 0
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "issingle": 1
+}

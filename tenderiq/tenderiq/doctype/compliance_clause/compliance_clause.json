@@ -1,0 +1,95 @@
+{
+ "actions": [],
+ "creation": "2026-01-01 00:00:00",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "clause_name",
+  "category",
+  "jurisdiction",
+  "description",
+  "is_mandatory",
+  "is_seed",
+  "keywords"
+ ],
+ "fields": [
+  {
+   "fieldname": "clause_name",
+   "label": "Clause Name",
+   "fieldtype": "Data",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "category",
+   "label": "Applies To Category",
+   "fieldtype": "Select",
+   "options": "All\nGoods\nWorks\nServices\nConsultancy",
+   "default": "All",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "jurisdiction",
+   "label": "Jurisdiction",
+   "fieldtype": "Data",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "description",
+   "label": "Description",
+   "fieldtype": "Small Text"
+  },
+  {
+   "fieldname": "is_mandatory",
+   "label": "Mandatory",
+   "fieldtype": "Check",
+   "default": 1
+  },
+  {
+   "fieldname": "is_seed",
+   "label": "Seed Library",
+   "fieldtype": "Check",
+   "default": 0
+  },
+  {
+   "fieldname": "keywords",
+   "label": "Match Keywords (comma-separated)",
+   "fieldtype": "Small Text"
+  }
+ ],
+ "links": [],
+ "modified": "2026-01-01 00:00:00",
+ "modified_by": "Administrator",
+ "module": "TenderIQ",
+ "name": "Compliance Clause",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0
+  },
+  {
+   "role": "Tender Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 0
+  },
+  {
+   "role": "Bid Contributor",
+   "read": 1,
+   "write": 1,
+   "create": 0,
+   "delete": 0
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "autoname": "field:clause_name"
+}

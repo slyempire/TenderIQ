@@ -1,0 +1,104 @@
+{
+ "actions": [],
+ "creation": "2026-01-01 00:00:00",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "tender",
+  "currency",
+  "lines",
+  "subtotal",
+  "margin_pct",
+  "bid_price",
+  "recommended_price",
+  "recommendation_notes"
+ ],
+ "fields": [
+  {
+   "fieldname": "tender",
+   "label": "Tender",
+   "fieldtype": "Link",
+   "options": "Tender",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "currency",
+   "label": "Currency",
+   "fieldtype": "Link",
+   "options": "Currency",
+   "default": "KES"
+  },
+  {
+   "fieldname": "lines",
+   "label": "Lines",
+   "fieldtype": "Table",
+   "options": "Pricing Sheet Line"
+  },
+  {
+   "fieldname": "subtotal",
+   "label": "Subtotal",
+   "fieldtype": "Currency",
+   "read_only": 1
+  },
+  {
+   "fieldname": "margin_pct",
+   "label": "Margin %",
+   "fieldtype": "Percent"
+  },
+  {
+   "fieldname": "bid_price",
+   "label": "Bid Price",
+   "fieldtype": "Currency",
+   "read_only": 1
+  },
+  {
+   "fieldname": "recommended_price",
+   "label": "AI Recommended Price",
+   "fieldtype": "Currency",
+   "read_only": 1
+  },
+  {
+   "fieldname": "recommendation_notes",
+   "label": "Recommendation Notes",
+   "fieldtype": "Long Text",
+   "read_only": 1
+  }
+ ],
+ "links": [],
+ "modified": "2026-01-01 00:00:00",
+ "modified_by": "Administrator",
+ "module": "TenderIQ",
+ "name": "Pricing Sheet",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0
+  },
+  {
+   "role": "Tender Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 0
+  },
+  {
+   "role": "Bid Contributor",
+   "read": 1,
+   "write": 1,
+   "create": 0,
+   "delete": 0
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "autoname": "naming_series:",
+ "naming_series": "PS-.YYYY.-.####"
+}
