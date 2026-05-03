@@ -158,9 +158,80 @@ def check_deadline_alerts():
     active_tenders = frappe.get_all(
         "Tender",
         filters={
-            "status": ["in", ["Bid Decision", "I— not required.
-"""
-import frappe
+            "status": ["not in", ["Bid Decision", "I\u2013 not required."]],
+            "deadline": ["is", "set"],
+        },
+        fields=["name", "tender_name", "deadline", "status", "bid_manager",
+                "procuring_entity"],
+        order_by="deadline asc",
+    )
+
+    if not active_tenders:
+        return
+
+    alerts_sent = 0
+
+    for t in active_tenders:
+        days_left = date_diff(t.deadline, today)
+
+        if days_left in ALERT_DAYS or days_left < 0:
+            _send_deadline_alert(t, days_left)
+            alerts_sent += 1
+
+    # Also flag overdue checklist items
+    _flag_overdue_checklist_items(today)
+
+    frappe.logger().info(f"TenderIQ: check_deadline_alerts sent {alerts_sent} alerts")
+
+
+def _send_deadline_alert(tender, days_left):
+    """Send a deadline alert email (and optionally WhatsApp) for a tender."""
+    if not tender.bid_manager:
+        return
+
+    if days_left < 0:
+        subject = f"\u26a0\ufe0f OVERDUE: {tender.tender_name} deadline was {abs(days_left)} day(s) ago"
+        urgency = "OVERDUE"
+    elif days_left == 0:
+        subject = f"\ud83d\udea8 TODAY: {tender.tender_name} deadline is TODAY"
+        urgency = "TODAY"
+    else:
+        subject = f"\u23f0 {days_left} day(s) left: {tender.tender_name}"
+        urgency = f"{days_left} DAYS"
+
+    message = f"""
+    <p>Deadline alert for tender: <strong>{tender.tender_name}</strong></p>
+    <p>Entity: {tender.procuring_entity}</p>
+    <p>Deadline: {tender.deadline} ({urgency})</p>
+    <p>Status: {tender.status}</p>
+    <p><a href="{get_url()}/app/tender/{tender.name}">Open in TenderIQ</a></p>
+    """
+
+    frappe.sendmail(
+        recipients=[tender.bid_manager],
+        subject=subject,
+        message=message,
+    )
+
+
+def _flag_overdue_checklist_items(today):
+    """Mark checklist items whose due date has passed as overdue."""
+    overdue_items = frappe.get_all(
+        "Tender Checklist",
+        filters={
+            "status": ["not in", ["Done", "N/A"]],
+            "due_date": ["<", today],
+        },
+        fields=["name"],
+    )
+
+    for item in overdue_items:
+        frappe.db.set_value("Tender Checklist", item.name, "status", "Overdue")
+
+    if overdue_items:
+        frappe.db.commit()
+
+
 
 
 # ---------------------------------------------------------------------------
